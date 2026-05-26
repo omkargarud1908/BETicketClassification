@@ -1,4 +1,4 @@
-import { callAzureFoundry, parseModelContent } from './azureFoundryService.js'
+import { callGoogleGemini, parseModelContent } from './googleGeminiService.js'
 
 const classificationSystemPrompt = `You classify IT support tickets.
 Return only JSON with these fields:
@@ -23,7 +23,7 @@ export async function classifyTicket(payload) {
     `Description: ${description}`,
   ].join('\n')
 
-  const result = await callAzureFoundry(
+  const result = await callGoogleGemini(
     [
       { role: 'system', content: classificationSystemPrompt },
       { role: 'user', content: ticketText },

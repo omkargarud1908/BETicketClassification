@@ -1,4 +1,4 @@
-import { callAzureFoundry, parseModelContent } from './azureFoundryService.js'
+import { callGoogleGemini, parseModelContent } from './googleGeminiService.js'
 
 const chatSystemPrompt =
   `You are a SharePoint Support Assistant.
@@ -22,7 +22,7 @@ export async function answerChat(payload) {
     .filter((item) => item?.role === 'user' || item?.role === 'assistant')
     .map((item) => ({ role: item.role, content: String(item.content || '') }))
 
-  const result = await callAzureFoundry(
+  const result = await callGoogleGemini(
     [
       { role: 'system', content: chatSystemPrompt },
       ...safeHistory,

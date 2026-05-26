@@ -1,9 +1,12 @@
 import { existsSync, readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+
+const localEnvPath = fileURLToPath(new URL('../../.env', import.meta.url))
 
 export function loadLocalEnv() {
-  if (!existsSync('.env')) return
+  if (!existsSync(localEnvPath)) return
 
-  const entries = readFileSync('.env', 'utf8').split(/\r?\n/)
+  const entries = readFileSync(localEnvPath, 'utf8').split(/\r?\n/)
 
   for (const entry of entries) {
     const line = entry.trim()

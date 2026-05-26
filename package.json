@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js",
+    "start": "node --use-system-ca server.js",
+    "dev": "node --use-system-ca --watch server.js",
     "build": "node --check server.js",
     "lint": "eslint .",
     "preview": "vite preview"
